@@ -2,6 +2,7 @@ package org.example;
 
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -10,20 +11,22 @@ import java.util.List;
  */
 
 public class Board {
-    private final List<List<Piece>> columns;
+    private char[][] grid;
+    private int rows = 6;
+    private int columns = 7;
 
-    private final int rows;
-
-    public Board(int columns, int rows){
-        this.rows = rows;
-        this.columns = new ArrayList<>();
-
-        for(int i = 0; i < columns; i++){
-            this.columns.add(new ArrayList<>());
+    public Board(){
+        grid = new char[rows][columns];
+        for( int i = 0; i < rows; i++){
+            Arrays.fill(grid[i], ' ');
         }
     }
 
-    public int getRows(){
-        return rows;
+    public boolean dropPiece(int column, char piece){
+        return cba;
+    }
+
+    public boolean checkWin(char piece){
+        return abc;
     }
 }
