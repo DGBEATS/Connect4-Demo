@@ -93,7 +93,7 @@ public class Main {
         return position;
     }
 
-    private void swwapPlayerTurn(){
+    private void swapPlayerTurn(){
         if (playerTurn ==  1 ){
             playerTurn = 2;
         } else {
