@@ -65,6 +65,42 @@ public class Main {
                 Objects.equals(input, "7")));
     }
 
+    /**
+     * Check to see if column is full
+     * @param column bad user input
+     * @return true if the column is full
+     */
+    private boolean isColumnFull(int column){
+        return (board[0][column-1] == " X " || board[0][column-1] == " 0 ");
+    }
+
+    /**
+     * Get the next free slot
+     * @param column
+     * @return the next free row of a set column
+     */
+    private int getNextFreeSlot(int column){
+        int position = 5;
+        boolean found = false;
+        while (position >= 0 && !found){
+            if (!Objects.equals(board[position][column], " X") && !Objects.equals(board[position][column],
+                    " 0 " )){
+                found = true;
+            } else {
+                position--;
+            }
+        }
+        return position;
+    }
+
+    private void swwapPlayerTurn(){
+        if (playerTurn ==  1 ){
+            playerTurn = 2;
+        } else {
+            playerTurn = 1;
+        }
+    }
+
 
     public static void main(String[] args) {
         System.out.println("Hello and welcome!");
