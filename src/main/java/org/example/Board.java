@@ -22,11 +22,11 @@ public class Board {
         }
     }
 
-    public boolean dropPiece(int column, char piece){
-        return cba;
-    }
-
-    public boolean checkWin(char piece){
-        return abc;
-    }
+//    public boolean dropPiece(int column, char piece){
+//        return cba;
+//    }
+//
+//    public boolean checkWin(char piece){
+//        return abc;
+//    }
 }
