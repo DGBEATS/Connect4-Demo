@@ -1,6 +1,7 @@
 package org.example;
 
 import java.util.Objects;
+import java.util.Scanner;
 
 public class Main {
 
@@ -93,12 +94,55 @@ public class Main {
         return position;
     }
 
+
+    /**
+     * Swap the current play's turn
+     */
     private void swapPlayerTurn(){
         if (playerTurn ==  1 ){
             playerTurn = 2;
         } else {
             playerTurn = 1;
         }
+    }
+
+    /**
+     * Place A Piece onto the board in an available position
+     */
+    private void placePiece(){
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Player " + playerTurn + " - Please select which column to place your piece (1-7):");
+        String input = sc.nextLine();
+
+        while (!validInput(input) || isColumnFull(Integer.parseInt(input))){
+            while (!validInput(input)){
+                System.out.println("Invalid input - please pick a column from 1-7");
+                input = sc.nextLine();
+            }
+
+            while (isColumnFull(Integer.parseInt(input))){
+                System.out.println("Column Full, choose another column");
+                input = sc.nextLine();
+                if (!validInput(input)){
+                    break;
+                }
+            }
+        }
+
+        int columnOption = Integer.parseInt(input) - 1;
+
+        System.out.println("Next free row in column: " + getNextFreeSlot(columnOption));
+
+        //place a connect piece
+        String placeAPiece;
+        if (playerTurn == 1){
+            placeAPiece = " X ";
+        } else {
+            placeAPiece = " 0 ";
+        }
+        board[getNextFreeSlot(columnOption)][columnOption] = placeAPiece;
+        displayBoard();
+        swapPlayerTurn();
     }
 
 
